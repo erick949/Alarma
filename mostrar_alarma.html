@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIF Escalado</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Altura del 100% de la pantalla */
+            background-color: #000; /* Fondo negro para destacar el GIF */
+        }
+
+        img {
+            width: 100vw; /* Ancho completo de la pantalla */
+            height: auto; /* Mantener proporciones del GIF */
+            max-height: 100vh; /* Evitar que sobrepase la altura de la pantalla */
+        }
+    </style>
+</head>
+<body>
+    <!-- Ruta del GIF que quieres mostrar -->
+    <img src="tu-gif.gif" alt="GIF Escalado">
+</body>
+</html>
