@@ -45,7 +45,20 @@
         }
     </style>
     <script>
+        let datosPendientes = null; // Almacena datos si llegan antes de que la página cargue
+
         function recibirDatos(datos) {
+            const mensajeElemento = document.getElementById("mensaje");
+            if (!mensajeElemento) {
+                // Si el elemento no está listo, guarda los datos pendientes
+                datosPendientes = datos;
+                return;
+            }
+            // Procesa los datos
+            actualizarMensaje(datos);
+        }
+
+        function actualizarMensaje(datos) {
             const mensajeElemento = document.getElementById("mensaje");
             if (datos.toLowerCase() === "frio") {
                 mensajeElemento.innerText = "Frio";
@@ -54,10 +67,18 @@
                 mensajeElemento.innerText = "Calor";
                 mensajeElemento.className = "calor"; // Aplica estilo para "Calor"
             } else {
-                //mensajeElemento.innerText = "Datos no válidos";
-               // mensajeElemento.className = ""; // Quitar estilos si no es válido
+                mensajeElemento.innerText = "Datos no válidos";
+                mensajeElemento.className = ""; // Quitar estilos si no es válido
             }
         }
+
+        // Cuando la página termine de cargar, procesa datos pendientes si existen
+        window.onload = function () {
+            if (datosPendientes) {
+                actualizarMensaje(datosPendientes);
+                datosPendientes = null; // Limpiar después de procesar
+            }
+        };
     </script>
 </head>
 <body>
