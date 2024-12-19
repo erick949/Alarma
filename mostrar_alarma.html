@@ -13,21 +13,59 @@
 
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh; /* Altura del 100% de la pantalla */
             background-color: #000; /* Fondo negro para destacar el GIF */
+            color: white; /* Color de texto por defecto */
         }
 
         img {
             width: 100vw; /* Ancho completo de la pantalla */
             height: auto; /* Mantener proporciones del GIF */
-            max-height: 100vh; /* Evitar que sobrepase la altura de la pantalla */
+            max-height: 70vh; /* Evitar que sobrepase la altura de la pantalla */
+        }
+
+        #mensaje {
+            margin-top: 20px;
+            font-size: 2em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .frio {
+            color: blue;
+            text-shadow: 0 0 10px lightblue;
+        }
+
+        .calor {
+            color: orange;
+            text-shadow: 0 0 10px red;
         }
     </style>
+    <script>
+        function recibirDatos(datos) {
+            const mensajeElemento = document.getElementById("mensaje");
+            if (datos.toLowerCase() === "frio") {
+                mensajeElemento.innerText = "Frio";
+                mensajeElemento.className = "frio"; // Aplica estilo para "Frio"
+            } else if (datos.toLowerCase() === "calor") {
+                mensajeElemento.innerText = "Calor";
+                mensajeElemento.className = "calor"; // Aplica estilo para "Calor"
+            } else {
+                mensajeElemento.innerText = "Datos no válidos";
+                mensajeElemento.className = ""; // Quitar estilos si no es válido
+            }
+        }
+
+        // Prueba inicial (puedes borrar esto y llamar a recibirDatos desde App Inventor)
+        setTimeout(() => recibirDatos("Calor"), 2000); // Ejemplo: Cambiar a "Frio" o "Calor"
+    </script>
 </head>
 <body>
     <!-- Ruta del GIF que quieres mostrar -->
     <img src="alarma.gif" alt="Imagen de alarma">
+    <div id="mensaje">Esperando datos...</div>
 </body>
 </html>
